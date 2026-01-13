@@ -1,25 +1,30 @@
 import React from 'react';
 
-const Badge = ({ children, variant = 'info' }) => {
-	const variants = {
-		info: { bg: 'rgba(99, 102, 241, 0.2)', color: '#818cf8', border: '1px solid rgba(99, 102, 241, 0.3)' },
-		success: { bg: 'rgba(34, 197, 94, 0.2)', color: '#4ade80', border: '1px solid rgba(34, 197, 94, 0.3)' },
-		warning: { bg: 'rgba(234, 179, 8, 0.2)', color: '#facc15', border: '1px solid rgba(234, 179, 8, 0.3)' },
-		error: { bg: 'rgba(239, 68, 68, 0.2)', color: '#f87171', border: '1px solid rgba(239, 68, 68, 0.3)' },
+type BadgeVariant = 'default' | 'success' | 'warning' | 'error';
+
+interface BadgeProps {
+	children: React.ReactNode;
+	variant?: BadgeVariant;
+	className?: string;
+}
+
+export const Badge = ({
+	children,
+	variant = 'default',
+	className = ''
+}: BadgeProps) => {
+	const variants: Record<BadgeVariant, string> = {
+		default: "bg-gray-100 text-gray-800",
+		success: "bg-green-100 text-green-800",
+		warning: "bg-yellow-100 text-yellow-800",
+		error: "bg-red-100 text-red-800"
 	};
 
-	const style = {
-		display: 'inline-flex',
-		padding: '0.25rem 0.75rem',
-		borderRadius: '9999px',
-		fontSize: '0.75rem',
-		fontWeight: '600',
-		backgroundColor: variants[variant].bg,
-		color: variants[variant].color,
-		border: variants[variant].border,
-	};
+	const baseStyles = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium";
 
-	return <span style={style}>{children}</span>;
+	return (
+		<span className={`${baseStyles} ${variants[variant]} ${className}`}>
+			{children}
+		</span>
+	);
 };
-
-export default Badge;

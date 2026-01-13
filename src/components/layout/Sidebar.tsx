@@ -1,49 +1,46 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Sidebar = ({ activePage, onNavigate }) => {
-	const links = [
-		{ id: 'button', label: 'Buttons', icon: '🔘' },
-		{ id: 'input', label: 'Inputs', icon: '⌨️' },
-		{ id: 'card', label: 'Cards (Mols)', icon: '🃏' },
-	];
+interface NavItem {
+	name: string;
+	path: string;
+}
 
+const navItems: NavItem[] = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Button', path: '/component/button' },
+	{ name: 'Input', path: '/component/input' },
+	{ name: 'Card', path: '/component/card' },
+	{ name: 'Badge', path: '/component/badge' },
+	{ name: 'Checkbox', path: '/component/checkbox' },
+];
+
+export const Sidebar = () => {
 	return (
-		<aside style={{
-			width: '250px',
-			borderRight: '1px solid var(--border)',
-			backgroundColor: 'var(--surface)',
-			height: '100%',
-			padding: '2rem 1rem',
-			display: 'flex',
-			flexDirection: 'column',
-			gap: '0.5rem'
-		}}>
-			<div style={{ marginBottom: '2rem', paddingLeft: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-				Components
+		<aside className="w-64 h-screen bg-gray-50 border-r border-gray-200 flex flex-col fixed left-0 top-0">
+			<div className="p-6 border-b border-gray-200">
+				<h1 className="text-2xl font-bold text-blue-600">My catalog</h1>
+				<p className="text-xs text-gray-500 mt-1">TS & Tailwind Playground</p>
 			</div>
-			{links.map(link => (
-				<div
-					key={link.id}
-					onClick={() => onNavigate(link.id)}
-					style={{
-						padding: '0.75rem 1rem',
-						borderRadius: 'var(--radius-md)',
-						cursor: 'pointer',
-						display: 'flex',
-						alignItems: 'center',
-						gap: '0.75rem',
-						color: activePage === link.id ? 'var(--primary)' : 'var(--text-muted)',
-						backgroundColor: activePage === link.id ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
-						transition: 'var(--transition)',
-						fontWeight: activePage === link.id ? '600' : '400'
-					}}
-				>
-					<span>{link.icon}</span>
-					{link.label}
-				</div>
-			))}
+
+			<nav className="flex-1 overflow-y-auto py-4">
+				<ul>
+					{navItems.map((item) => (
+						<li key={item.path}>
+							<NavLink
+								to={item.path}
+								className={({ isActive }) =>
+									`block px-6 py-3 text-sm font-medium transition-colors duration-200 ${isActive
+										? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600'
+										: 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+									}`
+								}
+							>
+								{item.name}
+							</NavLink>
+						</li>
+					))}
+				</ul>
+			</nav>
 		</aside>
 	);
 };
-
-export default Sidebar;

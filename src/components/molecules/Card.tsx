@@ -1,37 +1,25 @@
 import React from 'react';
 
-const Card = ({ title, children, footer }) => {
+interface CardProps {
+	children: React.ReactNode;
+	title?: string;
+	description?: string;
+	className?: string;
+}
+
+export const Card = ({ children, title, description, className = ''}: CardProps) => {
 	return (
-		<div style={{
-			backgroundColor: 'var(--surface)',
-			borderRadius: 'var(--radius-lg)',
-			border: '1px solid var(--border)',
-			boxShadow: 'var(--shadow-md)',
-			overflow: 'hidden',
-			transition: 'var(--transition)'
-		}}>
-			{title && (
-				<div style={{
-					padding: '1.5rem',
-					borderBottom: '1px solid var(--border)'
-				}}>
-					<h3 style={{ fontSize: '1.25rem', fontWeight: '600' }}>{title}</h3>
+		<div className={`bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden ${className}`}>
+			{(title || description) && (
+				<div className="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+					{title && <h3 className="text-lg font-bold text-gray-900">{title}</h3>}
+					{description && <p className="text-sm text-gray-600 mt-1">{description}</p>}
 				</div>
 			)}
-			<div style={{ padding: '1.5rem' }}>
+
+			<div className="p-6">
 				{children}
 			</div>
-			{footer && (
-				<div style={{
-					padding: '1rem 1.5rem',
-					backgroundColor: 'rgba(0,0,0,0.1)',
-					borderTop: '1px solid var(--border)'
-				}}>
-					{footer}
-				</div>
-			)}
 		</div>
 	);
 };
-
-export default Card;
