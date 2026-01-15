@@ -7,11 +7,13 @@ interface NavItem {
 
 const navItems: NavItem[] = [
 	{ name: 'Home', path: '/' },
-	{ name: 'Button', path: '/component/button' },
-	{ name: 'Input', path: '/component/input' },
-	{ name: 'Card', path: '/component/card' },
-	{ name: 'Badge', path: '/component/badge' },
-	{ name: 'Checkbox', path: '/component/checkbox' },
+	{ name: 'Button', path: '/components/button' },
+	{ name: 'Input', path: '/components/input' },
+	{ name: 'Card', path: '/components/card' },
+	{ name: 'Badge', path: '/components/badge' },
+	{ name: 'Checkbox', path: '/components/checkbox' },
+	{ name: 'Modal', path: '/components/modal' },
+	{ name: 'Post List', path: '/components/post-list' },
 ];
 
 export const Sidebar = () => {

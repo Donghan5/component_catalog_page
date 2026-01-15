@@ -14,3 +14,33 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+# Simple frontend with React + Vite
+
+This is a simple frontend with React + Vite. It is a frontend for a backend that provides a list of posts and allows users to create, edit, and delete posts.
+
+All action just mocking with jsonplaceholder. So it is not a real frontend for a backend.
+
+## Features
+
+- List of posts
+- Create new post
+- Edit post
+- Delete post
+- Search posts
+- Pagination
+- Responsive design
+- Dark mode
+- Light mode
+- Theme switcher
+- Toast notifications
+- Modal dialogs
+- Form validation
+- Responsive design
+- Dark mode
+- Light mode
+- Theme switcher
+- Toast notifications
+- Modal dialogs
+- Form validation
